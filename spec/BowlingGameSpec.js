@@ -12,13 +12,23 @@ describe ('BowlingGame', function(){
     it ('has a total score of 0 ', function(){
       expect(bowlingGame.totalScore).toEqual(0);
     });
+
+    it('starts with a currentFrame of 0', function(){
+      expect(bowlingGame.currentFrameScore).toEqual(0);
+    });
   });
 
   describe('roll', function(){
-    it('rolling two rolls, with neither a strike or a spare, adds points to the total score', function(){
+    it('rolling adds points to currentFrame', function(){
       expect(bowlingGame.roll(5));
       expect(bowlingGame.roll(2));
-      expect(bowlingGame.totalScore).toEqual(7);
+      expect(bowlingGame.frames[1]).toEqual(7);
+      console.log(bowlingGame);
+    });
+    it('rolling twice changes the frame', function(){
+      expect(bowlingGame.roll(5));
+      expect(bowlingGame.roll(2));
+      expect(bowlingGame.currentFrameScore).toEqual(0);
     });
   });
 
