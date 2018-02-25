@@ -7,24 +7,25 @@ var BowlingGame = function(){
   this.currentFrame = 1;
   this.currentFrameScore = 0;
   this.rollCount = 0;
+  this.firstStrikeBonus;
+  this.secondStrikeBonus;
 };
 
 BowlingGame.prototype = {
   roll: function(number){
-    this.currentFrameScore += number;
+    this.totalScore += number;
     this.rollCount += 1;
-    if(number === 10 ){
-      this.strike();
+    if(this.rollCount === 1 && number === 10){
+      this._strike();
+    } else if(this.rollCount === 2 && number ) {
+
     } else if(number < 10 && this.rollCount === 2){
-      this.frames[this.currentFrame] = this.currentFrameScore;
-      this.currentFrame += 1;
-      this.currentFrameScore = 0;
-      this.rollCount = 0;
     };
   },
 
-  strike: function(){
+  _strike: function(){
     this.frames[this.currentFrame] = this.currentFrameScore;
+    this.firstStrikeBonus = true
     this.currentFrame += 1;
     this.currentFrameScore = 0;
     this.rollCount = 0;

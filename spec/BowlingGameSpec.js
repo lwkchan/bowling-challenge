@@ -22,26 +22,14 @@ describe ('BowlingGame', function(){
     it('rolling adds points to currentFrame', function(){
       expect(bowlingGame.roll(5));
       expect(bowlingGame.roll(2));
-      expect(bowlingGame.frames[1]).toEqual(7);
-      console.log(bowlingGame);
+      expect(bowlingGame.totalScore).toEqual(7);
     });
-    it('rolling twice changes the frame', function(){
-      expect(bowlingGame.roll(5));
-      expect(bowlingGame.roll(2));
-      expect(bowlingGame.currentFrame).toEqual(2);
-      expect(bowlingGame.currentFrameScore).toEqual(0);
-    });
-    it('rolling two gutter balls changes the frame', function(){
-      bowlingGame.roll(0);
-      bowlingGame.roll(0);
-      expect(bowlingGame.currentFrame).toEqual(2);
-    });
-    it('rolling a strike changes the frame', function(){
+    it('rolling a strike adds a bonus of the next two rolls', function(){
       bowlingGame.roll(10);
-      expect(bowlingGame.currentFrame).toEqual(2);
-      expect(bowlingGame.currentFrameScore).toEqual(0);
+      bowlingGame.roll(2);
+      bowlingGame.roll(7);
+      expect(bowlingGame.totalScore).toEqual(18);
     });
-
   });
 
 
