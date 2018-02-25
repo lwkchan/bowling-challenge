@@ -13,9 +13,6 @@ describe ('BowlingGame', function(){
       expect(bowlingGame.totalScore).toEqual(0);
     });
 
-    it('starts with a currentFrame of 0', function(){
-      expect(bowlingGame.currentFrameScore).toEqual(0);
-    });
   });
 
   describe('roll', function(){
@@ -28,7 +25,14 @@ describe ('BowlingGame', function(){
       bowlingGame.roll(10);
       bowlingGame.roll(2);
       bowlingGame.roll(7);
-      expect(bowlingGame.totalScore).toEqual(18);
+      expect(bowlingGame.totalScore).toEqual(28);
+    });
+    it('rolling two strikes in a row adds a bonus of the 2 rolls consecutive from each', function(){
+      bowlingGame.roll(10);
+      bowlingGame.roll(10);
+      bowlingGame.roll(7);
+      bowlingGame.roll(2);
+      expect(bowlingGame.totalScore).toEqual(55);
     });
   });
 
