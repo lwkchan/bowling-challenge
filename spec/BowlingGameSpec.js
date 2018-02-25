@@ -12,11 +12,10 @@ describe ('BowlingGame', function(){
     it ('has a total score of 0 ', function(){
       expect(bowlingGame.totalScore).toEqual(0);
     });
-
   });
 
   describe('roll', function(){
-    it('rolling adds points to currentFrame', function(){
+    it('adds points to currentFrame', function(){
       expect(bowlingGame.roll(5));
       expect(bowlingGame.roll(2));
       expect(bowlingGame.totalScore).toEqual(7);
@@ -60,6 +59,19 @@ describe ('BowlingGame', function(){
           bowlingGame.roll(10);
         }
         expect(bowlingGame.totalScore).toEqual(240);
+      });
+    });
+
+    describe ('The tenth frame', function(){
+      it('rolling a strike allows for an extra roll', function(){
+        for(var i = 0; i < 9; i ++){
+          bowlingGame.roll(7);
+          bowlingGame.roll(2);
+        }
+        bowlingGame.roll(10);
+        bowlingGame.roll(10);
+        bowlingGame.roll(5);
+        expect(bowlingGame.totalScore).toEqual(106);
       });
     });
   });
