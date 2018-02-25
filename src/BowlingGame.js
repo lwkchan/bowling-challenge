@@ -15,6 +15,7 @@ BowlingGame.prototype = {
     this.rollCount += 1;
     if(this.rollCount === 2){
       this.frames[this.currentFrame] = this.currentFrameScore;
+      this.currentFrame += 1;
       this.currentFrameScore = 0;
       this.rollCount = 0;
     };

@@ -28,8 +28,15 @@ describe ('BowlingGame', function(){
     it('rolling twice changes the frame', function(){
       expect(bowlingGame.roll(5));
       expect(bowlingGame.roll(2));
+      expect(bowlingGame.currentFrame).toEqual(2);
       expect(bowlingGame.currentFrameScore).toEqual(0);
     });
+    it('rolling two gutter balls changes the frame', function(){
+      expect(bowlingGame.roll(0));
+      expect(bowlingGame.roll(0));
+      expect(bowlingGame.currentFrame).toEqual(2);
+    });
+
   });
 
 
