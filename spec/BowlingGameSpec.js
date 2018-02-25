@@ -77,8 +77,16 @@ describe ('BowlingGame', function(){
         }
         bowlingGame.roll(10);
         bowlingGame.roll(5);
-        bowlingGame.roll(5);
-        expect(bowlingGame.totalScore).toEqual(106);
+        expect(function() {bowlingGame.roll(5)}).not.toThrow();
+      });
+      it('rolling a spare allows for an extra roll', function(){
+        for(var i = 0; i < 9; i ++){
+          bowlingGame.roll(7);
+          bowlingGame.roll(2);
+        }
+        bowlingGame.roll(3);
+        bowlingGame.roll(7)
+        expect(function() {bowlingGame.roll(5)}).not.toThrow();
       });
     });
   });
