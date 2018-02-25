@@ -63,13 +63,20 @@ describe ('BowlingGame', function(){
     });
 
     describe ('The tenth frame', function(){
+      it('rolling an incomplete frame bars the extra roll', function(){
+        for(var i = 0; i < 10; i ++){
+          bowlingGame.roll(7);
+          bowlingGame.roll(2);
+        }
+        expect(function() {bowlingGame.roll(5)}).toThrow('The game is over');
+      });
       it('rolling a strike allows for an extra roll', function(){
         for(var i = 0; i < 9; i ++){
           bowlingGame.roll(7);
           bowlingGame.roll(2);
         }
         bowlingGame.roll(10);
-        bowlingGame.roll(10);
+        bowlingGame.roll(5);
         bowlingGame.roll(5);
         expect(bowlingGame.totalScore).toEqual(106);
       });
