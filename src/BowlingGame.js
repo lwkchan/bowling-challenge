@@ -22,6 +22,9 @@ BowlingGame.prototype = {
     if(this.rollCount === 1 && number === 10){
       this._strike();
     }
+    if(this.rollCount === 2){
+      this.rollCount = 0;
+    }
   },
 
   _strike: function(){

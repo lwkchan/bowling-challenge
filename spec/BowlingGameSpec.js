@@ -48,7 +48,6 @@ describe ('BowlingGame', function(){
       it('rolling nine strikes in a row adds a bonus of the 2 rolls consecutive from each', function(){
         for(var i = 0; i < 9; i ++){
           bowlingGame.roll(10);
-          console.log(bowlingGame.totalScore)
         }
         expect(bowlingGame.totalScore).toEqual(240);
       });
