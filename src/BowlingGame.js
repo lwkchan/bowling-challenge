@@ -11,7 +11,7 @@ BowlingGame.prototype = {
   roll: function(number){
     this.totalScore += number;
     this.rollCount += 1;
-    if (this.strikeBonusCount === 3){
+    if (this.strikeBonusCount >= 3){
       this.totalScore += number;
       this.StrikeBonusCount -= 1;
     }
