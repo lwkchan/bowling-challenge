@@ -4,31 +4,42 @@ var BowlingGame = function(){
   this.STARTING_SCORE = 0
   this.totalScore = this.STARTING_SCORE
   this.rollCount = 0;
-  this.strikeBonusCount = 0;
+  this.bonusCounter = 0;
 };
 
 BowlingGame.prototype = {
   roll: function(number){
     this.totalScore += number;
     this.rollCount += 1;
-    if (this.strikeBonusCount >= 3){
-      this.totalScore += number;
-      this.StrikeBonusCount -= 1;
+    if (this.rollCount === 1){
+      this.firstRoll = number
     }
-    if(this.strikeBonusCount > 0){
+    if (this.bonusCounter >= 3){
       this.totalScore += number;
-      this.strikeBonusCount -= 1;
+      this.bonusCounter -= 1;
+    }
+    if(this.bonusCounter > 0){
+      this.totalScore += number;
+      this.bonusCounter -= 1;
     }
     if(this.rollCount === 1 && number === 10){
       this._strike();
     }
+    if(this.rollCount === 2 && number + this.firstRoll === 10){
+      this._spare();
+    }
     if(this.rollCount === 2){
+      this.firstRoll = 0;
       this.rollCount = 0;
     }
   },
 
   _strike: function(){
-    this.strikeBonusCount += 2;
+    this.bonusCounter += 2;
     this.rollCount = 0;
+  },
+
+  _spare: function(){
+    this.bonusCounter += 1;
   },
 }
