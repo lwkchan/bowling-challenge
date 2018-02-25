@@ -98,5 +98,20 @@ describe ('BowlingGame', function(){
         expect(function() {bowlingGame.roll(5)}).not.toThrow();
       });
     });
+
+    describe('Gutter game', function(){
+      it('finished after 20 gutter rolls', function(){
+        for(var i = 0; i < 20; i ++){
+          bowlingGame.roll(0);
+        }
+        expect(function() {bowlingGame.roll(5)}).toThrow('The game is over');
+      });
+      it('has a score of 0', function(){
+        for(var i = 0; i < 20; i ++){
+          bowlingGame.roll(0);
+        }
+        expect(bowlingGame.totalScore).toEqual(0);
+      });
+    });
   });
 })
