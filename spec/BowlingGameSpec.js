@@ -22,12 +22,21 @@ describe ('BowlingGame', function(){
     });
 
     describe('rolling a spare', function(){
-      it('adds the next roll as a bonus', function(){
+      it('adds the next roll as a bonus at the beginning of the game', function(){
         bowlingGame.roll(7);
         bowlingGame.roll(3);
         bowlingGame.roll(2);
         bowlingGame.roll(5);
         expect(bowlingGame.totalScore).toEqual(19);
+      });
+      it('adds the next roll as a bonus in the middle of the game', function(){
+        bowlingGame.roll(4);
+        bowlingGame.roll(3);
+        bowlingGame.roll(5);
+        bowlingGame.roll(2);
+        bowlingGame.roll(7);
+        bowlingGame.roll(3);
+        expect(bowlingGame.totalScore).toEqual(24);
       });
     });
 
@@ -54,11 +63,11 @@ describe ('BowlingGame', function(){
         bowlingGame.roll(2);
         expect(bowlingGame.totalScore).toEqual(58);
       });
-      it('rolling nine in a row adds a bonus of the 2 rolls consecutive from each', function(){
-        for(var i = 0; i < 9; i ++){
+      it('rolling consecutively throughout the game garners perfect score of 300', function(){
+        for(var i = 0; i < 12; i ++){
           bowlingGame.roll(10);
         }
-        expect(bowlingGame.totalScore).toEqual(240);
+        expect(bowlingGame.totalScore).toEqual(300);
       });
     });
 
