@@ -13,14 +13,16 @@ BowlingGame.prototype = {
   roll: function(number){
     if(this.frameCounter > 10 && !this.extraRoll){
       throw 'The game is over'
-    }
-    if(this.frameCounter > 10 && this.extraRoll){
+    } else if(this.frameCounter > 10 && this.extraRoll){
       this.totalScore += number;
       this.extraRoll = false;
     }
     if(this.frameCounter === 10){
       this._tenthFrame(number);
     } else {
+      if(number + this.firstRoll > 10) {
+        throw 'Invalid roll';
+      }
       this.totalScore += number;
       this.rollCount += 1;
       if (this.rollCount === 1){

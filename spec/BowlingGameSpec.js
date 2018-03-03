@@ -16,9 +16,14 @@ describe ('BowlingGame', function(){
 
   describe('roll', function(){
     it('adds points to currentFrame', function(){
-      expect(bowlingGame.roll(5));
-      expect(bowlingGame.roll(2));
+      bowlingGame.roll(5);
+      bowlingGame.roll(2);
       expect(bowlingGame.totalScore).toEqual(7);
+    });
+
+    it('throws an error if the sum of rolls one and two is over 10', function(){
+      bowlingGame.roll(5);
+      expect(function() {bowlingGame.roll(6)}).toThrow('Invalid roll');
     });
 
     describe('rolling a spare', function(){
