@@ -6,16 +6,13 @@ var BowlingGame = function(){
   this.rollCount = 0;
   this.bonusCounter = 0;
   this.frameCounter = 1;
-  this.extraRoll = false;
+  this.hasExtraRoll = false;
 };
 
 BowlingGame.prototype = {
   roll: function(number){
-    if(this.frameCounter > 10 && !this.extraRoll){
-      throw 'The game is over'
-    } else if(this.frameCounter > 10 && this.extraRoll){
-      this.totalScore += number;
-      this.extraRoll = false
+    if(this.frameCounter > 10){
+      this._extraRoll(number);
     }
     if(this.frameCounter === 10){
       this._tenthFrame(number)
@@ -28,12 +25,7 @@ BowlingGame.prototype = {
       if (this.rollCount === 1){
         this.firstRoll = number
       }
-      if (this.bonusCounter >= 3){
-        this._addBonus(number)
-      }
-      if(this.bonusCounter > 0){
-        this._addBonus(number)
-      }
+      this._checkBonus(number);
       if(this.rollCount === 1 && number === 10){
         this._strike()
       } else if(this.rollCount === 2 && number + this.firstRoll === 10){
@@ -60,6 +52,15 @@ BowlingGame.prototype = {
     this.bonusCounter += 1
   },
 
+  _checkBonus: function(number){
+    if (this.bonusCounter >= 3){
+      this._addBonus(number)
+    }
+    if(this.bonusCounter > 0){
+      this._addBonus(number)
+    }
+  },
+
   _addBonus: function(number){
     this.totalScore += number;
     this.bonusCounter -= 1
@@ -72,12 +73,22 @@ BowlingGame.prototype = {
       this.firstRoll = number
     }
     if(this.rollCount === 1 && number === 10){
-      this.extraRoll = true
+      this.hasExtraRoll = true
     } else if (this.rollCount === 2 && number + this.firstRoll === 10){
-      this.extraRoll = true
+      this.hasExtraRoll = true
     }
     if(this.rollCount === 2){
       this._resetForNextFrame()
     }
   },
+
+  _extraRoll: function(number){
+    if(!this.hasExtraRoll){
+      throw 'The game is over'
+    } else if(this.hasExtraRoll){
+      this.totalScore += number;
+      this.hasExtraRoll = false
+    }
+  }
+
 }
