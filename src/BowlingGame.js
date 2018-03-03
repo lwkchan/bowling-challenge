@@ -1,100 +1,100 @@
-'use strict';
+'use strict'
 
-var BowlingGame = function(){
+var BowlingGame = function () {
   this.STARTING_SCORE = 0
   this.totalScore = this.STARTING_SCORE
-  this.rollCount = 0;
-  this.bonusCounter = 0;
-  this.frameCounter = 1;
-  this.hasExtraRoll = false;
-};
+  this.rollCount = 0
+  this.bonusCounter = 0
+  this.frameCounter = 1
+  this.hasExtraRoll = false
+}
 
 BowlingGame.prototype = {
-  roll: function(number){
-    if(this.frameCounter > 10){
-      this._extraRoll(number);
+  roll: function (number) {
+    if (this.frameCounter > 10) {
+      this._extraRoll(number)
     }
-    if(this.frameCounter === 10){
+    if (this.frameCounter === 10) {
       this._tenthFrame(number)
     } else {
-      if(number + this.firstRoll > 10) {
+      if (number + this.firstRoll > 10) {
         throw 'Invalid roll'
       }
-      this._countRoll(number);
-      if (this.rollCount === 1){
+      this._countRoll(number)
+      if (this.rollCount === 1) {
         this.firstRoll = number
       }
-      this._addBonus(number);
-      this._checkBonusRoll(number);
-      if(this.rollCount === 2){
+      this._addBonus(number)
+      this._checkBonusRoll(number)
+      if (this.rollCount === 2) {
         this._resetForNextFrame()
       }
     }
   },
 
-  _countRoll: function(number){
-    this.totalScore += number;
-    this.rollCount += 1;
+  _countRoll: function (number) {
+    this.totalScore += number
+    this.rollCount += 1
   },
 
-  _resetForNextFrame: function(){
-    this.firstRoll = 0;
-    this.rollCount = 0;
+  _resetForNextFrame: function () {
+    this.firstRoll = 0
+    this.rollCount = 0
     this.frameCounter += 1
   },
 
-  _checkBonusRoll: function(number){
-    if(this.rollCount === 1 && number === 10){
+  _checkBonusRoll: function (number) {
+    if (this.rollCount === 1 && number === 10) {
       this._strike()
-    } else if(this.rollCount === 2 && number + this.firstRoll === 10){
+    } else if (this.rollCount === 2 && number + this.firstRoll === 10) {
       this._spare()
     }
   },
 
-  _strike: function(){
-    this.bonusCounter += 2;
+  _strike: function () {
+    this.bonusCounter += 2
     this._resetForNextFrame()
   },
 
-  _spare: function(){
+  _spare: function () {
     this.bonusCounter += 1
   },
 
-  _addBonus: function(number){
-    if (this.bonusCounter >= 3){
-      this.totalScore += number;
+  _addBonus: function (number) {
+    if (this.bonusCounter >= 3) {
+      this.totalScore += number
       this.bonusCounter -= 1
     }
-    if(this.bonusCounter > 0){
-      this.totalScore += number;
+    if (this.bonusCounter > 0) {
+      this.totalScore += number
       this.bonusCounter -= 1
     }
   },
 
-  _tenthFrame: function(number){
-    this._countRoll(number);
-    if(this.rollCount === 1){
+  _tenthFrame: function (number) {
+    this._countRoll(number)
+    if (this.rollCount === 1) {
       this.firstRoll = number
     }
-    this._awardExtraRoll(number);
-    if(this.rollCount === 2){
+    this._awardExtraRoll(number)
+    if (this.rollCount === 2) {
       this._resetForNextFrame()
     }
   },
 
-  _awardExtraRoll: function(number){
-    if(this.rollCount === 1 && number === 10){
+  _awardExtraRoll: function (number) {
+    if (this.rollCount === 1 && number === 10) {
       this.hasExtraRoll = true
-    } else if (this.rollCount === 2 && number + this.firstRoll === 10){
+    } else if (this.rollCount === 2 && number + this.firstRoll === 10) {
       this.hasExtraRoll = true
     }
   },
 
-  _extraRoll: function(number){
-    if(!this.hasExtraRoll){
+  _extraRoll: function (number) {
+    if (!this.hasExtraRoll) {
       throw 'The game is over'
-    } else if(this.hasExtraRoll){
-      this.totalScore += number;
+    } else if (this.hasExtraRoll) {
+      this.totalScore += number
       this.hasExtraRoll = false
     }
   }
