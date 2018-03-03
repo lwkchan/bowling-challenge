@@ -20,8 +20,7 @@ BowlingGame.prototype = {
       if(number + this.firstRoll > 10) {
         throw 'Invalid roll'
       }
-      this.totalScore += number;
-      this.rollCount += 1;
+      this._countRoll(number);
       if (this.rollCount === 1){
         this.firstRoll = number
       }
@@ -31,6 +30,11 @@ BowlingGame.prototype = {
         this._resetForNextFrame()
       }
     }
+  },
+
+  _countRoll: function(number){
+    this.totalScore += number;
+    this.rollCount += 1;
   },
 
   _resetForNextFrame: function(){
@@ -68,8 +72,7 @@ BowlingGame.prototype = {
   },
 
   _tenthFrame: function(number){
-    this.totalScore += number;
-    this.rollCount += 1;
+    this._countRoll(number);
     if(this.rollCount === 1){
       this.firstRoll = number
     }
