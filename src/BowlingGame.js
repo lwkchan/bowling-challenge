@@ -25,12 +25,8 @@ BowlingGame.prototype = {
       if (this.rollCount === 1){
         this.firstRoll = number
       }
-      this._checkBonus(number);
-      if(this.rollCount === 1 && number === 10){
-        this._strike()
-      } else if(this.rollCount === 2 && number + this.firstRoll === 10){
-        this._spare()
-      }
+      this._addBonus(number);
+      this._checkBonusRoll(number);
       if(this.rollCount === 2){
         this._resetForNextFrame()
       }
@@ -43,6 +39,14 @@ BowlingGame.prototype = {
     this.frameCounter += 1
   },
 
+  _checkBonusRoll: function(number){
+    if(this.rollCount === 1 && number === 10){
+      this._strike()
+    } else if(this.rollCount === 2 && number + this.firstRoll === 10){
+      this._spare()
+    }
+  },
+
   _strike: function(){
     this.bonusCounter += 2;
     this._resetForNextFrame()
@@ -52,18 +56,15 @@ BowlingGame.prototype = {
     this.bonusCounter += 1
   },
 
-  _checkBonus: function(number){
+  _addBonus: function(number){
     if (this.bonusCounter >= 3){
-      this._addBonus(number)
+      this.totalScore += number;
+      this.bonusCounter -= 1
     }
     if(this.bonusCounter > 0){
-      this._addBonus(number)
+      this.totalScore += number;
+      this.bonusCounter -= 1
     }
-  },
-
-  _addBonus: function(number){
-    this.totalScore += number;
-    this.bonusCounter -= 1
   },
 
   _tenthFrame: function(number){
