@@ -38,8 +38,7 @@ BowlingGame.prototype = {
       }
       if(this.rollCount === 1 && number === 10){
         this._strike();
-      }
-      if(this.rollCount === 2 && number + this.firstRoll === 10){
+      } else if(this.rollCount === 2 && number + this.firstRoll === 10){
         this._spare();
       }
       if(this.rollCount === 2){
@@ -71,8 +70,7 @@ BowlingGame.prototype = {
     }
     if(this.rollCount === 1 && number === 10){
       this.extraRoll = true;
-    }
-    if (this.rollCount === 2 && number + this.firstRoll === 10){
+    } else if (this.rollCount === 2 && number + this.firstRoll === 10){
       this.extraRoll = true;
     }
     if(this.rollCount === 2){
