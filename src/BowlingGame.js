@@ -76,13 +76,17 @@ BowlingGame.prototype = {
     if(this.rollCount === 1){
       this.firstRoll = number
     }
+    this._awardExtraRoll(number);
+    if(this.rollCount === 2){
+      this._resetForNextFrame()
+    }
+  },
+
+  _awardExtraRoll: function(number){
     if(this.rollCount === 1 && number === 10){
       this.hasExtraRoll = true
     } else if (this.rollCount === 2 && number + this.firstRoll === 10){
       this.hasExtraRoll = true
-    }
-    if(this.rollCount === 2){
-      this._resetForNextFrame()
     }
   },
 
