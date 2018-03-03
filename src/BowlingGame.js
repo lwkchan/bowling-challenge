@@ -15,13 +15,13 @@ BowlingGame.prototype = {
       throw 'The game is over'
     } else if(this.frameCounter > 10 && this.extraRoll){
       this.totalScore += number;
-      this.extraRoll = false;
+      this.extraRoll = false
     }
     if(this.frameCounter === 10){
-      this._tenthFrame(number);
+      this._tenthFrame(number)
     } else {
       if(number + this.firstRoll > 10) {
-        throw 'Invalid roll';
+        throw 'Invalid roll'
       }
       this.totalScore += number;
       this.rollCount += 1;
@@ -29,20 +29,18 @@ BowlingGame.prototype = {
         this.firstRoll = number
       }
       if (this.bonusCounter >= 3){
-        this.totalScore += number;
-        this.bonusCounter -= 1;
+        this._addBonus(number)
       }
       if(this.bonusCounter > 0){
-        this.totalScore += number;
-        this.bonusCounter -= 1;
+        this._addBonus(number)
       }
       if(this.rollCount === 1 && number === 10){
-        this._strike();
+        this._strike()
       } else if(this.rollCount === 2 && number + this.firstRoll === 10){
-        this._spare();
+        this._spare()
       }
       if(this.rollCount === 2){
-        this._resetForNextFrame();
+        this._resetForNextFrame()
       }
     }
   },
@@ -50,31 +48,36 @@ BowlingGame.prototype = {
   _resetForNextFrame: function(){
     this.firstRoll = 0;
     this.rollCount = 0;
-    this.frameCounter += 1;
+    this.frameCounter += 1
   },
 
   _strike: function(){
     this.bonusCounter += 2;
-    this._resetForNextFrame();
+    this._resetForNextFrame()
   },
 
   _spare: function(){
-    this.bonusCounter += 1;
+    this.bonusCounter += 1
+  },
+
+  _addBonus: function(number){
+    this.totalScore += number;
+    this.bonusCounter -= 1
   },
 
   _tenthFrame: function(number){
     this.totalScore += number;
     this.rollCount += 1;
     if(this.rollCount === 1){
-      this.firstRoll = number;
+      this.firstRoll = number
     }
     if(this.rollCount === 1 && number === 10){
-      this.extraRoll = true;
+      this.extraRoll = true
     } else if (this.rollCount === 2 && number + this.firstRoll === 10){
-      this.extraRoll = true;
+      this.extraRoll = true
     }
     if(this.rollCount === 2){
-      this._resetForNextFrame();
+      this._resetForNextFrame()
     }
   },
 }
