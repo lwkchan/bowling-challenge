@@ -13,8 +13,11 @@
     <div id="score">
       <p class="score-contents">Total score:</p>
       <h2 id="score-number" class="score-contents"></h2>
+      <p>Frame number:</p>
+      <p id="frame-number"></p>
     </div>
     <div id="control-panel">
+      <button class= "roll-button" type="button" id="roll-0">0</button><br>
       <button class= "roll-button" type="button" id="roll-1">1</button>
       <button class= "roll-button" type="button" id="roll-2">2</button>
       <button class= "roll-button" type="button" id="roll-3">3</button>
@@ -31,58 +34,75 @@
       $( document ).ready(function() {
         bowlingGame = new BowlingGame()
         $('#score-number').text(bowlingGame.totalScore)
+        $('#frame-number').text(bowlingGame.frameCounter)
         $('#lets-bowl').hide().fadeIn(600)
         $('#score').hide().fadeIn(800)
         $('#control-panel').hide().slideToggle(100)
 
+        $('#roll-0').on('click', function(){
+          bowlingGame.roll(0);
+          $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
+        });
+
         $('#roll-1').on('click', function(){
           bowlingGame.roll(1);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-2').on('click', function(){
           bowlingGame.roll(2);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-3').on('click', function(){
           bowlingGame.roll(3);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-4').on('click', function(){
           bowlingGame.roll(4);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-5').on('click', function(){
           bowlingGame.roll(5);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-6').on('click', function(){
           bowlingGame.roll(6);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-7').on('click', function(){
           bowlingGame.roll(7);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-8').on('click', function(){
           bowlingGame.roll(8);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-9').on('click', function(){
           bowlingGame.roll(9);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $('#roll-10').on('click', function(){
           bowlingGame.roll(10);
           $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(bowlingGame.frameCounter)
         });
 
         $(window).on("error", function(evt) {
