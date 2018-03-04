@@ -4,16 +4,29 @@
     <meta charset="utf-8">
     <title>Bowling Game</title>
     <script type="text/javascript" src="src/BowlingGame.js"></script>
+    <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <h1 id="greeting">Hello</h1>
+    <header>
+      <h1 id="lets-bowl">Let's bowl</h1>
+    </header>
+    <div id="score">
+      <p class="score-contents">Total score:</p>
+      <h2 class="score-contents">0</h2>
+    </div>
+
+
+
+
+
+
+
+
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>
-        if (jQuery) {
-          alert("jquery is loaded");
-      } else {
-          alert("Not loaded");
-      }
+      $( document ).ready(function() {
+        $('#lets-bowl').hide().fadeIn(600)
+      })
     </script>
   </body>
 </html>

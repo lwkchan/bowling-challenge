@@ -1,0 +1,28 @@
+body {
+  margin: 0 auto;
+  font-family: arial;
+}
+header {
+  top: 0;
+  height: 110px;
+  width: 100%;
+  line-height: 100px;
+  margin: 0 auto;
+  background-image: url("../images/space-header.jpg");
+  background-size: contain;
+  color: white;
+  text-align: center;
+}
+h1 {
+  margin: 0 auto;
+  vertical-align: middle;
+}
+#score {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 60px;
+  padding: 30px;
+}
+.score-contents {
+  margin: 20px auto;
+}
