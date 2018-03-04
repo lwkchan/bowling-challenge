@@ -85,6 +85,13 @@
           $('#score-number').text(bowlingGame.totalScore)
         });
 
+        $(window).on("error", function(evt) {
+          console.log("jQuery error event:", evt);
+          var e = evt.originalEvent; // get the javascript event
+          console.log("original event:", e);
+          alert(e.error)
+      });
+
       })
     </script>
   </body>
