@@ -37,66 +37,61 @@
         $('#frame-number').text(bowlingGame.frameCounter)
         $('#lets-bowl').hide().fadeIn(600)
         $('#score').hide().fadeIn(800)
-        $('#control-panel').hide().slideToggle(100)
+        $('#control-panel').hide().slideToggle(100);
+
+        var _calculateNumbers = function(){
+          $('#score-number').text(bowlingGame.totalScore)
+          $('#frame-number').text(frame)
+        };
 
         $('#roll-0').on('click', function(){
           bowlingGame.roll(0);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-1').on('click', function(){
           bowlingGame.roll(1);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-2').on('click', function(){
           bowlingGame.roll(2);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-3').on('click', function(){
           bowlingGame.roll(3);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-4').on('click', function(){
           bowlingGame.roll(4);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-5').on('click', function(){
           bowlingGame.roll(5);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-6').on('click', function(){
           bowlingGame.roll(6);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-7').on('click', function(){
           bowlingGame.roll(7);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-8').on('click', function(){
           bowlingGame.roll(8);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-9').on('click', function(){
           bowlingGame.roll(9);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+          _calculateNumbers();
         });
 
         $('#roll-10').on('click', function(){
