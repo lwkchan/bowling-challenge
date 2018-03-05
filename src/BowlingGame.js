@@ -2,9 +2,9 @@
 
 var BowlingGame = function () {
   this.STARTING_SCORE = 0
-  this.totalScore = this.STARTING_SCORE
   this.GAME_OVER_ERROR = 'The game is over'
   this.INVALID_ROLL_ERROR = 'Invalid roll'
+  this.totalScore = this.STARTING_SCORE
   this.rollCount = 0
   this.bonusCounter = 0
   this.frameCounter = 1
