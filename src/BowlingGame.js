@@ -13,9 +13,6 @@ var BowlingGame = function () {
 
 BowlingGame.prototype = {
   roll: function (number) {
-    if (this.frameCounter > 10) {
-      this._extraRoll(number)
-    }
     if (this.frameCounter === 10) {
       this._tenthFrame(number)
     } else {
@@ -74,14 +71,19 @@ BowlingGame.prototype = {
   },
 
   _tenthFrame: function (number) {
-    this._countRoll(number)
+      this.rollCount += 1
     if (this.rollCount === 1) {
+      this.totalScore += number
       this.firstRoll = number
+    } else if (this.rollCount === 2) {
+      this.totalScore += number
+    } else if (this.rollCount === 3 && this.hasExtraRoll) {
+      this.totalScore += number
+      this.hasExtraRoll = false;
+    } else if (this.rollCount === 3 && !this.hasExtraRoll) {
+      throw this.gameOverError
     }
     this._awardExtraRoll(number)
-    if (this.rollCount === 2) {
-      this._resetForNextFrame()
-    }
   },
 
   _awardExtraRoll: function (number) {
