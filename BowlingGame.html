@@ -41,7 +41,7 @@
 
         var _calculateNumbers = function(){
           $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGames.frameCounter)
+          $('#frame-number').text(bowlingGame.frameCounter)
         };
 
         $('#roll-0').on('click', function(){
@@ -101,7 +101,7 @@
         });
 
         $(window).on("error", function(evt) {
-          var e = evt.originalEvent; // get the javascript event
+          var e = evt.originalEvent;
           alert(e.error)
       });
 
