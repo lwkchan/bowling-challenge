@@ -25,12 +25,12 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 1. Appreciating the complexity of the bowling scoring system, I spent a long time diagramming the 'bowlingGame' model, taking into account the bonuses allocated by strikes and spares.
 
 2. These diagrams gave me the following key specifications:
-  * A roll needs to add points to the total score
-  * **Strikes** - The frame ends immediately. The bonus for that frame is the number of pins knocked down by the next two rolls.
-  * **Spares** - The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-  * **Tenth frame** - If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-  * **Perfect Game** scores 300 points.
-  * **Gutter Game** scores 0 points.
+      * A roll needs to add points to the total score
+      * **Strikes** - The frame ends immediately. The bonus for that frame is the number of pins knocked down by the next two rolls.
+      * **Spares** - The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
+      * **Tenth frame** - If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
+      * **Perfect Game** scores 300 points.
+      * **Gutter Game** scores 0 points.
 
 3. I implemented the features one-by-one, writing the necessary code to pass a feature test before moving on and implementing the next feature. In doing so, I ensured that no other specifications were affected by the addition of a new one.
 
@@ -41,14 +41,14 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 ## Key learnings
 
 * Diagramming out complex models
-  * At the first instance, I realised halfway through coding that I had diagrammed my original model incorrectly.  So with Git, I branched out from an earlier commit in order to restart my model. To see abandoned original model, run ```git checkout old-master```
+  * I realised halfway through coding that I had diagrammed my original model incorrectly.  So with Git, I branched out a new master from an earlier commit. To see abandoned original model, run ```git checkout old-master```
 * Refactoring JavaScript
 * Implementing front-end animations with jQuery.
 
 ## To complete
 
 * Finish off UI
-* Finish off edge case of showing 'frame 11' on the html
+* ~Finish off edge case of showing 'frame 11' on the html~
 
 ### Optional Extras
 
