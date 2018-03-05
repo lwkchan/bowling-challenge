@@ -1,8 +1,10 @@
-'use strict'
+ 'use strict'
 
 var BowlingGame = function () {
   this.STARTING_SCORE = 0
   this.totalScore = this.STARTING_SCORE
+  this.gameOverError = 'The game is over'
+  this.invalidRollError = 'Invalid roll'
   this.rollCount = 0
   this.bonusCounter = 0
   this.frameCounter = 1
@@ -18,7 +20,7 @@ BowlingGame.prototype = {
       this._tenthFrame(number)
     } else {
       if (number + this.firstRoll > 10) {
-        throw 'Invalid roll'
+        throw this.invalidRollError
       }
       this._countRoll(number)
       if (this.rollCount === 1) {
@@ -92,7 +94,7 @@ BowlingGame.prototype = {
 
   _extraRoll: function (number) {
     if (!this.hasExtraRoll) {
-      throw 'The game is over'
+      throw this.gameOverError
     } else if (this.hasExtraRoll) {
       this.totalScore += number
       this.hasExtraRoll = false
