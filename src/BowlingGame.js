@@ -82,6 +82,8 @@ BowlingGame.prototype = {
       this.hasExtraRoll = false;
     } else if (this.rollCount === 3 && !this.hasExtraRoll) {
       throw this.GAME_OVER_ERROR
+    } else if (this.rollCount === 4){
+      throw this.GAME_OVER_ERROR
     }
     this._addBonus(number)
     this._awardExtraRoll(number)
