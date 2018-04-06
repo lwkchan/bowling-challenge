@@ -10,96 +10,162 @@
     <header>
       <h1 id="lets-bowl">Let's bowl</h1>
     </header>
-    <div id="frame-counter">
-      <p>Current frame:</p>
-      <p id="frame-number"></p>
-    </div>
     <div id="score">
       <p class="score-contents">Total score:</p>
       <h2 id="score-number" class="score-contents"></h2>
     </div>
+
+  <table id="score-card" class="tg">
+    <tr>
+      <th colspan="2">1</th>
+      <th colspan="2">2</th>
+      <th colspan="2">3</th>
+      <th colspan="2">4</th>
+      <th colspan="2">5</th>
+      <th colspan="2">6</th>
+      <th colspan="2">7</th>
+      <th colspan="2">8</th>
+      <th colspan="2">9</th>
+      <th colspan="3">10</th>
+    </tr>
+    <tr>
+      <td id="roll-1"></td>
+      <td id="roll-2"></td>
+      <td id="roll-3"></td>
+      <td id="roll-4"></td>
+      <td id="roll-5"></td>
+      <td id="roll-6"></td>
+      <td id="roll-7"></td>
+      <td id="roll-8"></td>
+      <td id="roll-9"></td>
+      <td id="roll-10"></td>
+      <td id="roll-11"></td>
+      <td id="roll-12"></td>
+      <td id="roll-13"></td>
+      <td id="roll-14"></td>
+      <td id="roll-15"></td>
+      <td id="roll-16"></td>
+      <td id="roll-17"></td>
+      <td id="roll-18"></td>
+      <td id="roll-19"></td>
+      <td id="roll-20"></td>
+      <td id="roll-21"></td>
+    </tr>
+  </table>
     <div id="control-panel">
-      <button class= "roll-button" type="button" id="roll-0">0</button><br>
-      <button class= "roll-button" type="button" id="roll-1">1</button>
-      <button class= "roll-button" type="button" id="roll-2">2</button>
-      <button class= "roll-button" type="button" id="roll-3">3</button>
-      <button class= "roll-button" type="button" id="roll-4">4</button>
-      <button class= "roll-button" type="button" id="roll-5">5</button><br>
-      <button class= "roll-button" type="button" id="roll-6">6</button>
-      <button class= "roll-button" type="button" id="roll-7">7</button>
-      <button class= "roll-button" type="button" id="roll-8">8</button>
-      <button class= "roll-button" type="button" id="roll-9">9</button>
-      <button class= "roll-button" type="button" id="roll-10">10</button>
+      <button class= "roll-button" type="button" id="score-0">0</button><br>
+      <button class= "roll-button" type="button" id="score-1">1</button>
+      <button class= "roll-button" type="button" id="score-2">2</button>
+      <button class= "roll-button" type="button" id="score-3">3</button>
+      <button class= "roll-button" type="button" id="score-4">4</button>
+      <button class= "roll-button" type="button" id="score-5">5</button><br>
+      <button class= "roll-button" type="button" id="score-6">6</button>
+      <button class= "roll-button" type="button" id="score-7">7</button>
+      <button class= "roll-button" type="button" id="score-8">8</button>
+      <button class= "roll-button" type="button" id="score-9">9</button>
+      <button class= "roll-button" type="button" id="score-10">10</button>
     </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>
       $( document ).ready(function() {
         bowlingGame = new BowlingGame()
         $('#score-number').text(bowlingGame.totalScore)
-        $('#frame-number').text(bowlingGame.frameCounter)
         $('#lets-bowl').hide().fadeIn(600)
         $('#score').hide().fadeIn(800)
         $('#control-panel').hide().slideToggle(100);
 
-        var _calculateNumbers = function(){
+        var _updateScore = function() {
           $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
         };
 
-        $('#roll-0').on('click', function(){
-          bowlingGame.roll(0);
-          _calculateNumbers();
+        var scoreCardTracker = 1;
+
+        var _fillScoreCard = function(score) {
+          $(`#roll-${scoreCardTracker}`).text(`${score}`);
+          if (score === 10 && bowlingGame.frameCounter < 10){
+            scoreCardTracker += 2
+          } else if (score === 10 && bowlingGame.frameCounter === 10 && bowlingGame.rollCount === 0) {
+            scoreCardTracker += 2
+          } else {
+            scoreCardTracker += 1
+          }
+        }
+
+        $('#score-0').on('click', function(){
+          var score = 0;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore()
         });
 
-        $('#roll-1').on('click', function(){
-          bowlingGame.roll(1);
-          _calculateNumbers();
+        $('#score-1').on('click', function(){
+          var score = 1;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-2').on('click', function(){
-          bowlingGame.roll(2);
-          _calculateNumbers();
+        $('#score-2').on('click', function(){
+          var score = 2
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-3').on('click', function(){
-          bowlingGame.roll(3);
-          _calculateNumbers();
+        $('#score-3').on('click', function(){
+          var score = 3;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-4').on('click', function(){
-          bowlingGame.roll(4);
-          _calculateNumbers();
+        $('#score-4').on('click', function(){
+          var score = 4;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-5').on('click', function(){
-          bowlingGame.roll(5);
-          _calculateNumbers();
+        $('#score-5').on('click', function(){
+          var score = 5;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-6').on('click', function(){
-          bowlingGame.roll(6);
-          _calculateNumbers();
+        $('#score-6').on('click', function(){
+          var score = 6;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-7').on('click', function(){
-          bowlingGame.roll(7);
-          _calculateNumbers();
+        $('#score-7').on('click', function(){
+          var score = 7;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-8').on('click', function(){
-          bowlingGame.roll(8);
-          _calculateNumbers();
+        $('#score-8').on('click', function(){
+          var score = 8;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-9').on('click', function(){
-          bowlingGame.roll(9);
-          _calculateNumbers();
+        $('#score-9').on('click', function(){
+          var score = 9;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
-        $('#roll-10').on('click', function(){
-          bowlingGame.roll(10);
-          $('#score-number').text(bowlingGame.totalScore)
-          $('#frame-number').text(bowlingGame.frameCounter)
+        $('#score-10').on('click', function(){
+          var score = 10;
+          bowlingGame.roll(score);
+          _fillScoreCard(score);
+          _updateScore();
         });
 
         $(window).on("error", function(evt) {

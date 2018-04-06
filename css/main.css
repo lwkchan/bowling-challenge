@@ -2,6 +2,7 @@ body {
   margin: 0 auto;
   font-family: arial;
 }
+
 header {
   top: 0;
   height: 110px;
@@ -13,24 +14,64 @@ header {
   color: white;
   text-align: center;
 }
+
 h1 {
   font-size: 50px;
   margin: 0 auto;
   vertical-align: middle;
 }
-#frame-counter{
-  text-align: center;
-  height: 90px;
-  width: 150px;
-  border: 2px dashed gray;
-  border-radius: 5px;
+
+#frame-counter {
+    text-align: center;
+    height: 90px;
+    width: 150px;
+    border: 2px dashed gray;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 0 auto;
 }
+
+table {
+  text-align: center;
+  margin: 0 auto
+}
+
+.tg {
+  border-collapse: collapse;
+  border-spacing:0
+}
+
+.tg th {
+  width: 75px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+}
+
+.tg td {
+  height: 25px;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black
+}
+
 #score {
   text-align: center;
   margin: 0 auto;
   font-size: 60px;
   padding: 30px;
 }
+
 .score-contents {
   margin: 20px auto;
 }
