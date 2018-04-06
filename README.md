@@ -3,7 +3,7 @@
 
 Completed this as fifth weekend challenge at Makers Academy
 
-This program uses JavaScript to calculate the score of a bowling game.
+This program uses JavaScript to calculate the score of a bowling game. Use it to calculate your own bowling game here: https://lwkchan.github.io/bowling-challenge/
 
 ## How to use
 
