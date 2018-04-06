@@ -8,7 +8,7 @@ This program uses JavaScript to calculate the score of a bowling game.
 ## How to use
 
 1. Clone this repo.
-2. In command line, change into project directory and run ```open BowlingGame.html```
+2. In command line, change into project directory and run ```open index.html```
 
 ### To test code
 
