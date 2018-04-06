@@ -38,6 +38,12 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 
 5. Having finished the model, I implemented a front-end with HTML and jQuery.
 
+## Screenshots
+
+<img src="images/normal-game.png" width="600">
+
+<img src="images/perfect-game.png" width="600">
+
 ## Key learnings
 
 * Diagramming out complex models
