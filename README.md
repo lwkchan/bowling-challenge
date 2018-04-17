@@ -47,7 +47,6 @@ A bowling game consists of 10 frames in which the player tries to knock down the
 ## Key learnings
 
 * Diagramming out complex models
-  * I realised halfway through coding that I had diagrammed my original model incorrectly.  So with Git, I branched out a new master from an earlier commit. To see abandoned original model, run ```git checkout old-master```
 * Refactoring JavaScript
 * Implementing front-end animations with jQuery.
 
